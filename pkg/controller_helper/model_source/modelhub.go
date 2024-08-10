@@ -46,7 +46,7 @@ func (p *ModelHubProvider) InjectModelLoader(template *corev1.PodTemplateSpec) {
 	// Handle initContainer.
 	initContainer := &corev1.Container{
 		Name:  pkg.MODEL_LOADER_CONTAINER_NAME,
-		Image: pkg.LOADER_IMAGE,
+		Image: pkg.MODELHUB_LOADER_IMAGE,
 		VolumeMounts: []corev1.VolumeMount{
 			{
 				Name:      pkg.MODEL_VOLUME_NAME,

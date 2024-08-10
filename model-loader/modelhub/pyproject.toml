@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "llmaz"
+name = "modelhub"
 version = "0.1.0"
 description = "☸️ Effortlessly operating LLMs on Kubernetes"
 authors = ["contact@inftyai.com"]

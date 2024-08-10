@@ -50,7 +50,7 @@ func MergeKVs(toMerge map[string]string, toBeMerged map[string]string) map[strin
 	return toMerge
 }
 
-func ParseURI(uri string) (format string, url string, err error) {
+func ParseURI(uri string) (protocol string, address string, err error) {
 	parsers := strings.Split(uri, "://")
 	if len(parsers) != 2 {
 		return "", "", errors.New("uri format error")

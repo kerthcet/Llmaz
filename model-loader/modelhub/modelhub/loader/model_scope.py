@@ -20,7 +20,7 @@ from typing import Optional
 
 from modelscope import snapshot_download
 
-from loader.model_hub.model_hub import ModelHub, MODEL_LOCAL_DIR
+from loader.model_hub import ModelHub, MODEL_LOCAL_DIR
 
 MODEL_SCOPE = "ModelScope"
 MAX_WORKERS = 4

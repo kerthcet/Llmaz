@@ -12,10 +12,10 @@ RUN apk add --no-cache \
 RUN pip install --no-cache-dir poetry
 
 RUN poetry config virtualenvs.create false
-COPY pyproject.toml poetry.lock .
+COPY ./model-loader/modelhub/pyproject.toml ./model-loader/modelhub/poetry.lock .
 RUN poetry install --no-dev
 
-COPY llmaz/ llmaz/
-WORKDIR /workspace/llmaz
+COPY ./model-loader/modelhub/modelhub/ modelhub/
+WORKDIR /workspace/modelhub
 
 CMD ["poetry", "run", "python", "main.py"]

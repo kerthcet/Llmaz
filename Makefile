@@ -184,16 +184,25 @@ image-push: image-build
 image-load: IMAGE_BUILD_EXTRA_OPTS=--load
 image-load: image-load
 
-.PHONY: loader-image-build
-loader-image-build:
+.PHONY: modelhub-image-build
+modelhub-image-build:
 	$(IMAGE_BUILD_CMD) -t $(LOADER_IMG) \
-		-f Dockerfile.loader \
+		-f ./Dockerfile.modelhub \
 		$(IMAGE_BUILD_EXTRA_OPTS) ./
-loader-image-push: IMAGE_BUILD_EXTRA_OPTS=--push
-loader-image-push: loader-image-build
+modelhub-image-push: IMAGE_BUILD_EXTRA_OPTS=--push
+modelhub-image-push: modelhub-image-build
+modelhub-image-load: IMAGE_BUILD_EXTRA_OPTS=--load
+modelhub-image-load: modelhub-image-build
 
-loader-image-load: IMAGE_BUILD_EXTRA_OPTS=--load
-loader-image-load: loader-image-build
+.PHONY: objstore-image-build
+objstore-image-build:
+	$(IMAGE_BUILD_CMD) -t $(LOADER_IMG) \
+		-f ./Dockerfile.objstore \
+		$(IMAGE_BUILD_EXTRA_OPTS) ./
+objstore-image-push: IMAGE_BUILD_EXTRA_OPTS=--push
+objstore-image-push: objstore-image-build
+objstore-image-load: IMAGE_BUILD_EXTRA_OPTS=--load
+objstore-image-load: objstore-image-build
 
 KIND = $(shell pwd)/bin/kind
 .PHONY: kind

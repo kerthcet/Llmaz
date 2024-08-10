@@ -22,7 +22,7 @@ from threading import local
 
 from huggingface_hub import hf_hub_download, list_repo_files
 
-from loader.model_hub.model_hub import ModelHub, MODEL_LOCAL_DIR
+from loader.model_hub import ModelHub, MODEL_LOCAL_DIR
 
 
 HUGGING_FACE = "Huggingface"

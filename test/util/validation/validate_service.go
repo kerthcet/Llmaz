@@ -89,8 +89,13 @@ func ValidateModelLoader(model *coreapi.Model, workload *lws.LeaderWorkerSet, se
 		if initContainer.Name != pkg.MODEL_LOADER_CONTAINER_NAME {
 			return fmt.Errorf("unexpected initContainer name, want %s, got %s", pkg.MODEL_LOADER_CONTAINER_NAME, initContainer.Name)
 		}
-		if initContainer.Image != pkg.LOADER_IMAGE {
-			return fmt.Errorf("unexpected initContainer image, want %s, got %s", pkg.LOADER_IMAGE, initContainer.Image)
+
+		image := pkg.MODELHUB_LOADER_IMAGE
+		if model.Spec.Source.URI != nil {
+			image = pkg.OBJSTORE_LOADER_IMAGE
+		}
+		if initContainer.Image != image {
+			return fmt.Errorf("unexpected initContainer image, want %s, got %s", image, initContainer.Image)
 		}
 
 		envStrings := []string{"MODEL_ID", "MODEL_HUB_NAME", "HF_TOKEN", "HUGGING_FACE_HUB_TOKEN"}

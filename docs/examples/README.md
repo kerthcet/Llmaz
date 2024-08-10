@@ -1,6 +1,6 @@
 # Examples
 
-We provide a bunch of examples to serve large language models.
+We provide a bunch of examples to help you serve large language models.
 
 ## Table of Contents
 

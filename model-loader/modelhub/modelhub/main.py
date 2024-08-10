@@ -19,8 +19,8 @@ import logging
 from datetime import datetime
 
 
-from loader.model_hub.hub_factory import HubFactory
-from loader.model_hub.huggingface import HUGGING_FACE
+from loader.hub_factory import HubFactory
+from loader.huggingface import HUGGING_FACE
 
 logging.basicConfig(
     level=logging.INFO,
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     model_id = os.getenv("MODEL_ID")
 
     if not model_id:
-        raise EnvironmentError(f"Environment variable '{model_id}' not found.")
+        raise EnvironmentError("Environment variable MODEL_ID not found.")
 
     hub = HubFactory.new(hub_name)
 

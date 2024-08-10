@@ -42,12 +42,16 @@ type ModelHub struct {
 	Revision *string `json:"revision,omitempty"`
 }
 
+// URIProtocol represents the protocol to download the model following the format of
+// <type>://<address>, e.g. oci://<model address>.
+type URIProtocol string
+
 // Add roles for operating leaderWorkerSet.
 //
 // +kubebuilder:rbac:groups=leaderworkerset.x-k8s.io,resources=leaderworkersets,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=leaderworkerset.x-k8s.io,resources=leaderworkersets/status,verbs=get;update;patch
 
-// ModelSource represents source of the model.
+// ModelSource represents the source of the model.
 // Only one model source will be used.
 type ModelSource struct {
 	// ModelHub represents the model registry for model downloads.
@@ -56,7 +60,7 @@ type ModelSource struct {
 	// e.g. oci://<model address>. A wide range of source types are supported, such as s3, gcs
 	// docker images, oci artifacts and more.
 	// +optional
-	// URI *string `json:"uri,omitempty"`
+	URI *URIProtocol `json:"uri,omitempty"`
 }
 
 type FlavorName string
